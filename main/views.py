@@ -1,11 +1,20 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 import main.models as models
-import json
+import json, datetime
 
 # Create your views here.
 
 def shortcuts(request, shortcut: str):
+    # LOGGING MAIN
+    ip = request.META["REMOTE_ADDR"]
+    if 'User-Agent' in request.headers:
+        ua = request.headers['User-Agent']
+    else:
+        ua = "Unknown"
+    log = models.log.objects.create(log_ip=ip,log_ua=ua,log_shortcut=shortcut)
+    log.save()
+    # /LOGGING MAIN
     try:
         item = models.shortcut.objects.get(shortcut_key = shortcut)
     except:
@@ -38,4 +47,4 @@ def api_stat(request, item: str):
     return HttpResponse(json.dumps(respond), content_type="application/json")
 
 def home(request):
-    return HttpResponse("Welcome to shortcuts\nList of shortcuts: api/list\nShortcut usage: api/stat/<key or target>", content_type="text/plain")
+    return redirect("/admin")
