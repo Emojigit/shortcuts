@@ -12,7 +12,7 @@ class shortcut(models.Model):
     def __str__(self):
         return "{} -> {}, used {} time(s)".format(self.shortcut_key,self.shortcut_value,self.shortcut_accesses)
     def save(self, *args, **kwargs):
-        if self.name in BLACKLISTED_SHORTCUT_NAMES:
+        if self.shortcut_key in BLACKLISTED_SHORTCUT_NAMES:
             return
         else:
             super().save(*args, **kwargs)
