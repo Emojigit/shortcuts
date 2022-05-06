@@ -5,4 +5,4 @@ from django.db import models
 class shortcut(models.Model):
     shortcut_key = models.TextField()
     shortcut_value = models.URLField() # URL of the shortcut target
-    shortcut_usage = models.PositiveIntegerField() # Times the shortcut being accessed
+    shortcut_accesses = models.PositiveIntegerField() # Times the shortcut being accessed

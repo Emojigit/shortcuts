@@ -20,6 +20,7 @@ from main import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/list/', views.api_list),
+    path('api/stat/<str:item>/', views.api_stat),
     path('<str:shortcut>/', views.shortcuts),
     path('', views.home),
 ]
