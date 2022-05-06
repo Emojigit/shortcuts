@@ -7,7 +7,7 @@ import json
 
 def shortcuts(request, shortcut: str):
     try:
-        item = models.shortcuts.objects.get(shortcut_key = shortcut)
+        item = models.shortcut.objects.get(shortcut_key = shortcut)
     except:
         return HttpResponse("Not found, visit api/list to get list of shortcuts.\nRequested shortcut key: {}".format(shortcut), content_type="text/plain", status=404)
     target = item.shortcut_value
@@ -16,7 +16,7 @@ def shortcuts(request, shortcut: str):
     return redirect(target)
 
 def api_list(request):
-    items = models.shortcuts.objects.all()
+    items = models.shortcut.objects.all()
     items_dict = {}
     for x in items:
         items_dict[x.shortcut_key] = x.shortcut_value
