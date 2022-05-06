@@ -15,7 +15,7 @@ def shortcuts(request, shortcut: str):
     item.save()
     return redirect(target)
 
-def api_list(request, method: str):
+def api_list(request):
     items = models.shortcuts.objects.all()
     items_dict = {}
     for x in items:
