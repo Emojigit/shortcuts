@@ -6,7 +6,7 @@ from django.db import models
 BLACKLISTED_SHORTCUT_NAMES = ("admin","api")
 
 class shortcut(models.Model):
-    shortcut_key = models.TextField(help_text="Key of the shortcut")
+    shortcut_key = models.CharField(max_length=20,help_text="Key of the shortcut")
     shortcut_value = models.URLField(help_text="The target of the shortcut") # URL of the shortcut target
     shortcut_accesses = models.PositiveIntegerField(default=0) # Times the shortcut being accessed
     def __str__(self):
