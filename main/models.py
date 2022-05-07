@@ -16,6 +16,9 @@ class shortcut(models.Model):
             return
         else:
             super().save(*args, **kwargs)
+    shortcut_key.short_description = "Key"
+    shortcut_value.short_description = "Target"
+    shortcut_accesses.short_description = "Access Count"
 
 
 class log(models.Model):
@@ -25,3 +28,7 @@ class log(models.Model):
     log_time = models.DateTimeField(auto_now_add = True) # request time
     def __str__(self):
         return "{}: {} (UA {}) <- {}".format(str(self.log_time),self.log_ip,self.log_ua,self.log_shortcut)
+    log_time.short_description = "Access Time"
+    log_ip.short_description = "IP Address"
+    log_ua.short_description = "User Agent"
+    log_shortcut.short_description = "Shortcut"
