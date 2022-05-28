@@ -4,7 +4,7 @@ A minimal self-hosted shortcut service using the Django framework
 I suppose you know how to run a Django project. Just remember to create a superuser for database management.
 ## Create shortcuts
 Go to the "Shortcuts" database table, and set the following:
-* `shortcut_key`: The shortcut of the URL (`http://server/<shortcut_key>`)
+* `shortcut_key`: The URL of the shortcut(`http://server/<shortcut_key>`)
 * `shortcut_value`: The target of the shortcut
 * `shortcut_usage`: How many times is the shortcut used? Set it to 0 unless you want to cheat, lol
 ## (Probably) FAQ
